@@ -491,16 +491,16 @@ footer .base{margin-top:40px;padding-top:20px;border-top:1px solid var(--line);c
 <script>
 // Experts das operações: coloque a foto em assets/experts/ e o nome do arquivo em "foto".
 const EXPERTS = [
-  { nome: 'Pablo Marçal', foto: '' },
-  { nome: 'Pierre Rodrigues', foto: '' },
-  { nome: 'Mateus Ribeiro', foto: '' },
-  { nome: 'DevZap', foto: '' },
-  { nome: 'Andréia Mott', foto: '' },
+  { nome: 'Pablo Marçal', sub: 'Operação', foto: 'pablo-marcal.jpg' },
+  { nome: 'Pierry Rodrigues', sub: 'Operação', foto: 'pierry-rodrigues.jpg' },
+  { nome: 'Mateus Ribeiro', sub: 'Operação', foto: 'mateus-ribeiro.jpg' },
+  { nome: 'Andreia Mott', sub: 'Operação', foto: 'andreia-mott.jpg' },
+  { nome: 'Tiago Almeida', sub: 'DevZap', foto: 'tiago-devzap.jpg' },
 ]
 const esc = (t) => t.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c])
 document.getElementById('experts').innerHTML = EXPERTS.map((e) => `
   <article class="exp reveal"><div class="ph">${e.foto ? `<img src="assets/experts/${esc(e.foto)}" alt="${esc(e.nome)}" loading="lazy">` : `<span>${esc(e.nome.split(' ').map((w) => w[0]).slice(0, 2).join(''))}</span>`}</div>
-  <div class="nm"><div><h3>${esc(e.nome)}</h3><small>Operação</small></div><i></i></div></article>`).join('')
+  <div class="nm"><div><h3>${esc(e.nome)}</h3><small>${esc(e.sub)}</small></div><i></i></div></article>`).join('')
 
 // Perfis do Instagram dos sócios: preencha com o endereço exato (ex.: 'https://www.instagram.com/usuario/').
 const INSTAGRAM = { matheus: 'https://www.instagram.com/matheusbennettbr/', victor: 'https://www.instagram.com/victorrochabr/' }

@@ -285,12 +285,13 @@ footer .base{margin-top:40px;padding-top:20px;border-top:1px solid var(--line);c
 <section class="sec" id="operacoes">
   <div class="wrap">
     <div class="reveal">
-      <div class="eyebrow"><b>04</b> Experiência em operações reais</div>
+      <div class="eyebrow"><b>04</b> Experts que lançamos</div>
       <h2>Estratégia construída em campo. <em>Conhecimento aplicado ao mercado.</em></h2>
-      <p class="lead" style="margin-top:18px">Por trás da V8 existem estrategistas que já participaram de operações e projetos de lançamento com diferentes experts e negócios do mercado. Uma experiência construída na prática, acompanhando desafios, decisões e estruturas comerciais de diferentes operações.</p>
+      <p class="lead" style="margin-top:18px">Os estrategistas da V8 já participaram de lançamentos e operações com diferentes experts e negócios do mercado. Uma experiência construída na prática, acompanhando desafios, decisões e estruturas comerciais de cada projeto.</p>
+      <p style="margin-top:22px;font:700 13px Inter;letter-spacing:.18em;text-transform:uppercase;color:#e8e8ec">Alguns dos experts que lançamos</p>
     </div>
     <div class="ops" id="experts"></div>
-    <p class="lead reveal" style="margin-top:28px">Cada operação representa experiências e aprendizados que contribuem para a inteligência estratégica aplicada pela V8.</p>
+    <p class="lead reveal" style="margin-top:28px">Cada lançamento representa experiências e aprendizados que contribuem para a inteligência estratégica aplicada pela V8.</p>
   </div>
 </section>
 
@@ -491,11 +492,11 @@ footer .base{margin-top:40px;padding-top:20px;border-top:1px solid var(--line);c
 <script>
 // Experts das operações: coloque a foto em assets/experts/ e o nome do arquivo em "foto".
 const EXPERTS = [
-  { nome: 'Pablo Marçal', sub: 'Operação', foto: 'pablo-marcal.jpg' },
-  { nome: 'Pierry Rodrigues', sub: 'Operação', foto: 'pierry-rodrigues.jpg' },
-  { nome: 'Mateus Ribeiro', sub: 'Operação', foto: 'mateus-ribeiro.jpg' },
-  { nome: 'Andreia Mott', sub: 'Operação', foto: 'andreia-mott.jpg' },
-  { nome: 'Tiago Almeida', sub: 'DevZap', foto: 'tiago-devzap.jpg' },
+  { nome: 'Pablo Marçal', sub: 'Expert', foto: 'pablo-marcal.jpg' },
+  { nome: 'Pierry Rodrigues', sub: 'Expert', foto: 'pierry-rodrigues.jpg' },
+  { nome: 'Mateus Ribeiro', sub: 'Expert', foto: 'mateus-ribeiro.jpg' },
+  { nome: 'Andreia Mott', sub: 'Expert', foto: 'andreia-mott.jpg' },
+  { nome: 'Tiago Almeida', sub: 'Expert · DevZap', foto: 'tiago-devzap.jpg' },
 ]
 const esc = (t) => t.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c])
 document.getElementById('experts').innerHTML = EXPERTS.map((e) => `

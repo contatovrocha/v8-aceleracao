@@ -172,6 +172,19 @@ footer .base{margin-top:40px;padding-top:20px;border-top:1px solid var(--line);c
 .wa:hover{transform:scale(1.06)}
 .wa svg{width:30px;height:30px;fill:#fff}
 @media(max-width:640px){.wa{width:52px;height:52px;right:14px;bottom:14px}.wa svg{width:27px;height:27px}}
+/* faixa infinita com os perfis dos experts (entre a 1ª e a 2ª dobra) */
+.marquee{position:relative;overflow:hidden;background:#0d0d0f;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:22px 0}
+.marquee:before,.marquee:after{content:"";position:absolute;top:0;bottom:0;width:90px;z-index:2;pointer-events:none}
+.marquee:before{left:0;background:linear-gradient(90deg,#0d0d0f,transparent)}
+.marquee:after{right:0;background:linear-gradient(-90deg,#0d0d0f,transparent)}
+.mq-track{display:flex;gap:18px;width:max-content;animation:mq 38s linear infinite}
+.marquee:hover .mq-track{animation-play-state:paused}
+.mq-track a{flex-shrink:0;display:block;border-radius:16px;overflow:hidden;border:1px solid #2a2a30;background:#000}
+.mq-track img{height:120px;width:auto}
+@keyframes mq{to{transform:translateX(-50%)}}
+@media(max-width:640px){.marquee{padding:16px 0}.mq-track img{height:88px}.mq-track{gap:12px;animation-duration:28s}.marquee:before,.marquee:after{width:36px}}
+@media(prefers-reduced-motion:reduce){.mq-track{animation:none}.marquee{overflow-x:auto}}
+.nope{text-decoration:none;position:relative;display:inline;background:linear-gradient(#e5262d,#e5262d) 0 55%/100% 4px no-repeat}
 .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
 .reveal.on{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
@@ -256,7 +269,10 @@ footer .base{margin-top:40px;padding-top:20px;border-top:1px solid var(--line);c
   </div>
 </section>
 
-<!-- 04 · OPERAÇÕES -->
+<!-- faixa: perfis dos experts lançados -->
+<div class="marquee" aria-label="Perfis dos experts lançados pela V8"><div class="mq-track"><a href="https://www.instagram.com/pablomarcal1/" target="_blank" rel="noopener" aria-label="Instagram de Pablo Marçal"><img src="assets/ig/pablo-marcal.webp" alt="Perfil de Pablo Marçal no Instagram" loading="lazy" height="120"></a><a href="https://www.instagram.com/pierryrds/" target="_blank" rel="noopener" aria-label="Instagram de Pierry Rodrigues"><img src="assets/ig/pierry-rodrigues.webp" alt="Perfil de Pierry Rodrigues no Instagram" loading="lazy" height="120"></a><a href="https://www.instagram.com/omateusribeiro1/" target="_blank" rel="noopener" aria-label="Instagram de Mateus Ribeiro"><img src="assets/ig/mateus-ribeiro.webp" alt="Perfil de Mateus Ribeiro no Instagram" loading="lazy" height="120"></a><a href="https://www.instagram.com/andreiamott/" target="_blank" rel="noopener" aria-label="Instagram de Andreia Mott"><img src="assets/ig/andreia-mott.webp" alt="Perfil de Andreia Mott no Instagram" loading="lazy" height="120"></a><a href="https://www.instagram.com/tiagodevzapp/" target="_blank" rel="noopener" aria-label="Instagram de Tiago Almeida"><img src="assets/ig/tiago-devzap.webp" alt="Perfil de Tiago Almeida no Instagram" loading="lazy" height="120"></a><a href="https://www.instagram.com/pablomarcal1/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true" aria-label="Instagram de Pablo Marçal"><img src="assets/ig/pablo-marcal.webp" alt="Perfil de Pablo Marçal no Instagram" loading="lazy" height="120"></a><a href="https://www.instagram.com/pierryrds/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true" aria-label="Instagram de Pierry Rodrigues"><img src="assets/ig/pierry-rodrigues.webp" alt="Perfil de Pierry Rodrigues no Instagram" loading="lazy" height="120"></a><a href="https://www.instagram.com/omateusribeiro1/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true" aria-label="Instagram de Mateus Ribeiro"><img src="assets/ig/mateus-ribeiro.webp" alt="Perfil de Mateus Ribeiro no Instagram" loading="lazy" height="120"></a><a href="https://www.instagram.com/andreiamott/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true" aria-label="Instagram de Andreia Mott"><img src="assets/ig/andreia-mott.webp" alt="Perfil de Andreia Mott no Instagram" loading="lazy" height="120"></a><a href="https://www.instagram.com/tiagodevzapp/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true" aria-label="Instagram de Tiago Almeida"><img src="assets/ig/tiago-devzap.webp" alt="Perfil de Tiago Almeida no Instagram" loading="lazy" height="120"></a></div></div>
+
+<!-- 02 · OPERAÇÕES -->
 <section class="sec light" id="operacoes">
   <div class="wrap">
     <div class="reveal">
@@ -318,7 +334,7 @@ footer .base{margin-top:40px;padding-top:20px;border-top:1px solid var(--line);c
   <div class="wrap split">
     <div class="reveal">
       <div class="eyebrow"><b>05</b> Quem é a V8</div>
-      <h2>Não somos uma agência de marketing. <em>Somos uma estrutura de aceleração estratégica.</em></h2>
+      <h2><s class="nope">Não somos uma agência de marketing.</s> A V8 é um <em>Sistema de Aquisição Qualificada com Processo Comercial.</em></h2>
     </div>
     <div class="reveal">
       <p class="lead">A V8 Aceleração nasceu com um propósito: ajudar experts e especialistas a transformarem conhecimento e autoridade em negócios de mentoria estruturados.</p>

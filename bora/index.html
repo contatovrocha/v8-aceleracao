@@ -11,10 +11,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;800&family=Inter:wght@500;600&display=swap" rel="stylesheet">
 <style>
 :root{--or:#FF6A00;--bg:#0B0B0D}
-html,body{margin:0;height:100%;background:var(--bg);overflow:hidden}
+html,body{margin:0;height:100%;background:#000;overflow:hidden}
 #wrap{position:fixed;inset:0;display:flex;align-items:center;justify-content:center}
 #stage{width:1920px;height:1080px;position:relative;flex:none;overflow:hidden;
- background:radial-gradient(900px 600px at 82% 55%,rgba(255,106,0,.16) 0%,rgba(255,106,0,0) 70%),linear-gradient(180deg,#0E0E11 0%,#08080A 100%);font-family:Outfit,Arial,sans-serif;transform-origin:center}
+ background:radial-gradient(800px 520px at 82% 55%,rgba(255,106,0,.09) 0%,rgba(255,106,0,0) 70%),#000;font-family:Outfit,Arial,sans-serif;transform-origin:center}
 .speed{position:absolute;inset:-50%;background:repeating-linear-gradient(-12deg,transparent 0 118px,rgba(255,255,255,.025) 118px 119px);animation:run 6s linear infinite}
 @keyframes run{to{transform:translateX(-480px)}}
 .grain{position:absolute;inset:0;background:radial-gradient(ellipse at center,transparent 55%,rgba(0,0,0,.55) 100%)}
@@ -22,18 +22,27 @@ html,body{margin:0;height:100%;background:var(--bg);overflow:hidden}
 .logo.hit{filter:drop-shadow(0 0 18px rgba(255,106,0,.55))}
 .row{position:absolute;left:140px;top:0;bottom:0;display:flex;align-items:center;gap:40px}
 .txt{display:flex;flex-direction:column}
-.eyebrow{font-family:Inter,Arial,sans-serif;font-weight:600;font-size:26px;letter-spacing:10px;color:#8E8E96;text-transform:uppercase;margin-bottom:28px;display:flex;align-items:center;gap:20px}
+.eyebrow{font-style:italic;font-family:Inter,Arial,sans-serif;font-weight:600;font-size:26px;letter-spacing:10px;color:#8E8E96;text-transform:uppercase;margin-bottom:28px;display:flex;align-items:center;gap:20px}
 .eyebrow i{width:56px;height:3px;background:var(--or);display:block}
-h1{margin:0;font-weight:800;font-size:184px;line-height:.95;letter-spacing:-5px;
+h1{margin:0;transform:skewX(-10deg);transform-origin:left bottom;font-weight:800;font-size:184px;line-height:.95;letter-spacing:-5px;
  background:linear-gradient(100deg,#FFFFFF 0%,#FFFFFF 38%,#C9C9CE 46%,#FFFFFF 54%,#E4E4E8 100%);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:sheen 5s ease-in-out infinite}
 h1 span{display:block;font-weight:300;letter-spacing:-3px}
 h1 b{font-weight:800;color:var(--or);-webkit-text-fill-color:var(--or)}
 @keyframes sheen{0%{background-position:100% 0}60%,100%{background-position:-50% 0}}
 .rule{width:100%;height:2px;margin-top:40px;background:linear-gradient(90deg,var(--or) 0 140px,rgba(255,255,255,.12) 140px)}
-.sig{font-family:Inter,Arial,sans-serif;font-weight:500;font-size:24px;letter-spacing:6px;color:#6E6E78;text-transform:uppercase;margin-top:22px}
+.sig{font-style:italic;font-family:Inter,Arial,sans-serif;font-weight:500;font-size:24px;letter-spacing:6px;color:#6E6E78;text-transform:uppercase;margin-top:22px}
 #flag{width:440px;height:480px;flex:none}
 .bar{position:absolute;left:0;bottom:0;width:100%;height:6px;background:linear-gradient(90deg,var(--or),#FF8A33 50%,var(--or))}
 #bolt,#fx{position:absolute;inset:0;pointer-events:none}
+#chev,#zaps{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.ch{position:absolute;left:0;will-change:transform;animation:fly linear infinite}
+@keyframes fly{from{transform:translateX(-700px)}to{transform:translateX(2600px)}}
+.zap{position:absolute;will-change:transform,opacity,filter;animation:zap 1.6s ease-out forwards}
+@keyframes zap{0%{opacity:0;transform:scale(.55) rotate(var(--r));filter:blur(8px) brightness(2)}
+12%{opacity:1;transform:scale(1.05) rotate(var(--r));filter:blur(0) brightness(1.5)}
+22%{transform:scale(1) rotate(var(--r));filter:blur(0) brightness(1)}
+55%{opacity:1;filter:blur(0)}
+100%{opacity:0;transform:scale(1.35) translateY(-40px) rotate(var(--r));filter:blur(18px) brightness(1.6)}}
 #flash{position:absolute;inset:0;background:radial-gradient(circle at 50% 0%,rgba(255,180,110,.5),rgba(255,106,0,0) 70%);opacity:0;pointer-events:none;mix-blend-mode:screen}
 #stage.v{width:1080px;height:1920px}
 #stage.v .logo{left:50%;transform:translateX(-50%);top:160px;height:130px}
@@ -49,6 +58,25 @@ h1 b{font-weight:800;color:var(--or);-webkit-text-fill-color:var(--or)}
 <body>
 <div id="wrap"><div id="stage">
 <div class="speed"></div><div class="grain"></div>
+<svg width="0" height="0" style="position:absolute"><defs>
+<linearGradient id="zb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFB27A"/><stop offset=".45" stop-color="#FF6A1F"/><stop offset="1" stop-color="#FF8A66"/></linearGradient>
+<linearGradient id="zi" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFF6B0"/><stop offset="1" stop-color="#FFC21A"/></linearGradient>
+<filter id="zg" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+<filter id="cg" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+<clipPath id="cc"><polygon points="22,22 56,22 106,105 56,188 22,188 72,105"/></clipPath>
+<symbol id="bolt3d" viewBox="0 0 120 240"><g stroke-linejoin="round" stroke-linecap="round">
+<path d="M76 6 L24 132 L58 132 L42 234 L104 94 L68 94 L88 6 Z" transform="translate(9,7)" fill="#9A2C08" stroke="#9A2C08" stroke-width="14"/>
+<path d="M76 6 L24 132 L58 132 L42 234 L104 94 L68 94 L88 6 Z" fill="url(#zb)" stroke="url(#zb)" stroke-width="14"/>
+<path d="M76 6 L24 132 L58 132 L42 234 L104 94 L68 94 L88 6 Z" fill="none" stroke="#FFD2B0" stroke-width="3" opacity=".7"/>
+<path d="M78 30 L42 120 L66 120 L54 196 L92 104 L66 104 L82 30" fill="none" stroke="url(#zi)" stroke-width="7" filter="url(#zg)"/></g></symbol>
+<symbol id="chev1" viewBox="0 0 130 210">
+<polygon points="2,2 64,2 128,105 64,208 2,208 66,105" fill="#1A1A1D" stroke="#3A3A40" stroke-width="3" stroke-linejoin="round"/>
+<polygon points="22,22 56,22 106,105 56,188 22,188 72,105" fill="#2A0E00"/>
+<g clip-path="url(#cc)" filter="url(#cg)"><rect x="10" y="30" width="110" height="8" rx="4" fill="#FF7A1A"/><rect x="10" y="32" width="110" height="3" rx="1.5" fill="#FFD9A8"/><rect x="10" y="50" width="110" height="8" rx="4" fill="#FF7A1A"/><rect x="10" y="52" width="110" height="3" rx="1.5" fill="#FFD9A8"/><rect x="10" y="70" width="110" height="8" rx="4" fill="#FF7A1A"/><rect x="10" y="72" width="110" height="3" rx="1.5" fill="#FFD9A8"/><rect x="10" y="90" width="110" height="8" rx="4" fill="#FF7A1A"/><rect x="10" y="92" width="110" height="3" rx="1.5" fill="#FFD9A8"/><rect x="10" y="110" width="110" height="8" rx="4" fill="#FF7A1A"/><rect x="10" y="112" width="110" height="3" rx="1.5" fill="#FFD9A8"/><rect x="10" y="130" width="110" height="8" rx="4" fill="#FF7A1A"/><rect x="10" y="132" width="110" height="3" rx="1.5" fill="#FFD9A8"/><rect x="10" y="150" width="110" height="8" rx="4" fill="#FF7A1A"/><rect x="10" y="152" width="110" height="3" rx="1.5" fill="#FFD9A8"/><rect x="10" y="170" width="110" height="8" rx="4" fill="#FF7A1A"/><rect x="10" y="172" width="110" height="3" rx="1.5" fill="#FFD9A8"/></g>
+<circle cx="12" cy="12" r="3" fill="#55555c"/><circle cx="56" cy="12" r="3" fill="#55555c"/><circle cx="12" cy="198" r="3" fill="#55555c"/><circle cx="56" cy="198" r="3" fill="#55555c"/></symbol>
+</defs></svg>
+<div id="chev"></div>
+<div id="zaps"></div>
 <canvas id="bolt" width="1920" height="1080"></canvas>
 <img class="logo" id="logo" src="../assets/v8-logo.png" alt="V8 Aceleração">
 <div class="row">
@@ -91,27 +119,33 @@ function drawFlag(t){
  fx.fillStyle=rg;fx.beginPath();fx.arc(44,50,17,0,7);fx.fill();
 }
 
-/* ---------- raios ---------- */
-const bc=document.getElementById('bolt'),bx=bc.getContext('2d'),flash=document.getElementById('flash'),logo=document.getElementById('logo');
-let bolts=[],nextBolt=0;
-addEventListener('resize',fit);fit();
-function makeBolt(x,y,len,ang,w,depth){const pts=[[x,y]];let cx=x,cy=y,steps=14;
- for(let i=0;i<steps;i++){ang+=(Math.random()-.5)*.9;cx+=Math.cos(ang)*len/steps;cy+=Math.sin(ang)*len/steps;pts.push([cx,cy]);
-  if(depth<2&&Math.random()<.18)bolts.push({pts:null,...makeBolt(cx,cy,len*.45,ang+(Math.random()-.5)*1.4,w*.55,depth+1)})}
- return{pts,w,life:1}}
-function strike(){const n=1+Math.random()*2|0;
- for(let k=0;k<n;k++){const x=SW*.1+Math.random()*SW*.8;bolts.push(makeBolt(x,-20,700+Math.random()*500,Math.PI/2+(Math.random()-.5)*.6,5+Math.random()*4,0))}
- flash.style.transition='none';flash.style.opacity=.7;requestAnimationFrame(()=>{flash.style.transition='opacity .35s';flash.style.opacity=0});
- logo.classList.add('hit');setTimeout(()=>logo.classList.remove('hit'),160)}
-function drawBolts(dt){bx.clearRect(0,0,SW,SH);
- bolts=bolts.filter(b=>b.pts&&(b.life-=dt*2.4)>0);
- for(const b of bolts){const f=Math.random()<.25?.3:1,a=b.life*f;
-  bx.lineJoin='round';bx.lineCap='round';
-  for(const[w,col,bl]of[[b.w*3,'rgba(255,106,0,'+(a*.22)+')',30],[b.w*1.1,'rgba(255,150,70,'+(a*.7)+')',14],[b.w*.4,'rgba(255,255,255,'+a+')',0]]){
-   bx.shadowColor='#FF6A00';bx.shadowBlur=bl;bx.strokeStyle=col;bx.lineWidth=w;bx.beginPath();
-   b.pts.forEach((p,i)=>i?bx.lineTo(p[0],p[1]):bx.moveTo(p[0],p[1]));bx.stroke()}}
- bx.shadowBlur=0}
-
+/* ---------- setas »» passando ---------- */
+const chev=document.getElementById('chev');
+function addChev(){const d=document.createElement('div');d.className='ch';const h=140+Math.random()*220,dur=9+Math.random()*9;
+ d.innerHTML='<svg width="'+(h*1.25)+'" height="'+h+'" viewBox="0 0 260 210"><use href="#chev1" x="0" width="130" height="210"/><use href="#chev1" x="118" width="130" height="210"/></svg>';
+ d.style.top=(Math.random()*(SH-h))+'px';d.style.opacity=(.07+Math.random()*.09).toFixed(2);d.style.animationDuration=dur+'s';d.style.animationDelay=(-Math.random()*dur)+'s';
+ chev.appendChild(d)}
+/* ---------- raio 3D que surge e se dissipa ---------- */
+const zaps=document.getElementById('zaps'),bc=document.getElementById('bolt'),bx=bc.getContext('2d'),flash=document.getElementById('flash'),logo=document.getElementById('logo');
+let sparks=[],nextBolt=0;
+function strike(){
+ const v=SW<SH,w=v?170:130,h=w*2;
+ const Z=v?[[.06,.18,.70,.73],[.62,.8,.70,.73]]:[[.42,.66,0,.02],[.80,.88,.70,.72],[.88,.92,0,.03]];
+ const q=Z[Math.random()*Z.length|0],x=SW*(q[0]+Math.random()*(q[1]-q[0])),y=SH*(q[2]+Math.random()*(q[3]-q[2]));
+ const z=document.createElement('div');z.className='zap';z.style.left=x+'px';z.style.top=y+'px';z.style.width=w+'px';z.style.height=h+'px';
+ z.style.setProperty('--r',((Math.random()-.5)*24).toFixed(1)+'deg');
+ z.innerHTML='<svg width="100%" height="100%" viewBox="0 0 120 240"><use href="#bolt3d"/></svg>';zaps.appendChild(z);setTimeout(()=>z.remove(),1700);
+ const cx=x+w/2,cy=y+h/2;
+ setTimeout(()=>{for(let i=0;i<46;i++){const a=Math.random()*6.283,sp=2+Math.random()*7;
+  sparks.push({x:cx+(Math.random()-.5)*w*.5,y:cy+(Math.random()-.5)*h*.6,vx:Math.cos(a)*sp,vy:Math.sin(a)*sp-2,life:1,r:1.5+Math.random()*3})}},800);
+ flash.style.transition='none';flash.style.opacity=.5;requestAnimationFrame(()=>{flash.style.transition='opacity .6s';flash.style.opacity=0});
+ logo.classList.add('hit');setTimeout(()=>logo.classList.remove('hit'),220)}
+function drawBolts(dt){bx.clearRect(0,0,SW,SH);const k=dt*60;bx.globalCompositeOperation='lighter';
+ sparks=sparks.filter(p=>(p.life-=dt*1.1)>0);
+ for(const p of sparks){p.vx*=.96;p.vy=p.vy*.96-.04*k;p.x+=p.vx*k;p.y+=p.vy*k;
+  const g=bx.createRadialGradient(p.x,p.y,0,p.x,p.y,p.r*4);g.addColorStop(0,'rgba(255,230,160,'+p.life+')');g.addColorStop(.4,'rgba(255,120,30,'+(p.life*.6)+')');g.addColorStop(1,'rgba(255,106,0,0)');
+  bx.fillStyle=g;bx.beginPath();bx.arc(p.x,p.y,p.r*4,0,6.283);bx.fill()}
+ bx.globalCompositeOperation='source-over'}
 /* ---------- confete laminado ---------- */
 const cc=document.getElementById('confetti'),cx2=cc.getContext('2d');let dpr=Math.min(2,devicePixelRatio||1),CWd,CHt;
 function rs(){CWd=innerWidth;CHt=innerHeight;cc.width=CWd*dpr;cc.height=CHt*dpr;cx2.setTransform(dpr,0,0,dpr,0,0)}addEventListener('resize',rs);rs();
@@ -138,11 +172,12 @@ function drawConfetti(dt){cx2.clearRect(0,0,CWd,CHt);const k=dt*60;
 let last=performance.now(),T=0;
 function loop(now){const dt=Math.min(.05,(now-last)/1000);last=now;T+=dt;
  drawFlag(T);
- if(T>nextBolt){strike();nextBolt=T+2.2+Math.random()*2.4}
+ if(T>nextBolt){strike();nextBolt=T+1.8+Math.random()*1.6}
  drawBolts(dt);
  if(T>nextBurst){burst();nextBurst=T+2+Math.random()*.8}
  drawConfetti(dt);
  requestAnimationFrame(loop)}
+addEventListener('resize',fit);fit();for(let i=0;i<7;i++)addChev();
 requestAnimationFrame(loop);
 </script>
 </body>
